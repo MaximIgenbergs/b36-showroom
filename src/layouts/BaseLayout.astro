@@ -13,22 +13,60 @@ import Footer from "../components/Footer.astro";
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     />
+
+    <!-- SEO Meta -->
+    <title>{title}</title>
     <meta
       name="description"
-      content="Studentenvilla Bausewein — Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, All-in-Miete, eigenes Bad."
+      content="Studentenvilla Bausewein — Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, eigenes Bad mit Regendusche, Kitchenette, All-in-Miete. Jetzt bewerben."
     />
-    <title>{title}</title>
+    <meta
+      name="keywords"
+      content="Studentenapartment München, Studentenvilla München, möbliertes Studentenzimmer München, Wohnen Obermenzing, Studentenwohnung München-West, All-inclusive Miete München"
+    />
+    <meta name="author" content="Studentenvilla Bausewein" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://villa-bauseweinallee.de/" />
 
-    <!-- Open Graph für Social Media -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph (Facebook, WhatsApp, iMessage Vorschau) -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta
       property="og:description"
-      content="Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, All-in-Miete, eigenes Bad."
+      content="Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, eigenes Bad, Kitchenette, All-in-Miete."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://villa-bauseweinallee.de/" />
+    <meta
+      property="og:image"
+      content="https://villa-bauseweinallee.de/og-image.jpg"
+    />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Studentenvilla Bausewein" />
 
-    <!-- Favicon (ersetze später durch echtes Logo) -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, All-in-Miete."
+    />
+    <meta
+      name="twitter:image"
+      content="https://villa-bauseweinallee.de/og-image.jpg"
+    />
+
+    <!-- Sprache -->
+    <link
+      rel="alternate"
+      hreflang="de"
+      href="https://villa-bauseweinallee.de/"
+    />
   </head>
   <body>
     <Header />
