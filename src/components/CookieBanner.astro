@@ -1,0 +1,48 @@
+---
+
+---
+
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+  <div
+    class="bg-villa-dark/95 backdrop-blur-sm border-t border-white/10 px-4 sm:px-6 py-4"
+  >
+    <div
+      class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+    >
+      <p class="font-sans text-sm text-white/80 leading-relaxed max-w-2xl">
+        Diese Website verwendet technisch notwendige Cookies und lädt Inhalte
+        von externen Diensten (OpenStreetMap, Iconify). Dabei können Daten an
+        Dritte übermittelt werden. Details finden Sie in unserer
+        <a
+          href="/datenschutz"
+          class="text-villa-gold underline hover:text-white transition-colors"
+          >Datenschutzerklärung</a
+        >.
+      </p>
+
+      <div class="flex gap-3 shrink-0">
+        <button
+          id="cookie-accept"
+          class="font-sans text-sm font-bold bg-villa-gold text-white px-5 py-2.5 hover:bg-white hover:text-villa-dark transition-colors"
+        >
+          Verstanden
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("cookie-accept");
+
+  // Nur anzeigen wenn noch nicht akzeptiert
+  if (!localStorage.getItem("cookie-consent")) {
+    banner?.classList.remove("hidden");
+  }
+
+  acceptBtn?.addEventListener("click", () => {
+    localStorage.setItem("cookie-consent", "accepted");
+    banner?.classList.add("hidden");
+  });
+</script>
