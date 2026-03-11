@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/lato/400.css";
+@import "@fontsource/lato/700.css";
+
+@theme {
+  --color-villa-dark: #1a1a2e;
+  --color-villa-gold: #c8a96e;
+  --color-villa-cream: #f5f0e8;
+  --color-villa-charcoal: #3d3d3d;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-villa-charcoal);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* ===================== DARK MODE ===================== */
+
+/* Grundflächen */
+body.dark {
+  background-color: #0f0f1a;
+  color: #d5d0c8;
+}
+
+/* Weiße Hintergründe → dunkel */
+body.dark .bg-white,
+body.dark .bg-white\/95 {
+  background-color: #1a1a2e;
+}
+
+/* Creme-Hintergründe → etwas heller als Grundfläche */
+body.dark .bg-villa-cream {
+  background-color: #151525;
+}
+
+/* Header */
+body.dark header {
+  background-color: rgba(15, 15, 26, 0.95);
+  border-bottom-color: #2a2a3e;
+}
+
+/* Footer bleibt dunkel, aber Kontrast anpassen */
+body.dark footer {
+  background-color: #0a0a14;
+}
+
+/* ---- Textfarben ---- */
+body.dark .text-villa-dark {
+  color: #f5f0e8;
+}
+
+body.dark .text-villa-charcoal {
+  color: #b8b4ac;
+}
+
+body.dark .text-villa-charcoal\/50,
+body.dark .text-villa-charcoal\/60 {
+  color: rgba(184, 180, 172, 0.6);
+}
+
+body.dark .text-white {
+  color: #f5f0e8;
+}
+
+/* Villa-Gold bleibt gleich (sieht auf dunkel gut aus) */
+
+/* ---- Borders ---- */
+body.dark .border-villa-cream {
+  border-color: #2a2a3e;
+}
+
+body.dark .border-villa-charcoal\/20 {
+  border-color: rgba(200, 196, 188, 0.15);
+}
+
+body.dark .border-villa-gold {
+  border-color: #c8a96e;
+}
+
+body.dark .border-b-2.border-villa-gold {
+  border-bottom-color: #c8a96e;
+}
+
+body.dark .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Shadows ---- */
+body.dark .shadow-sm {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Formulare ---- */
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background-color: #1a1a2e;
+  color: #d5d0c8;
+  border-color: rgba(200, 196, 188, 0.15);
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: rgba(184, 180, 172, 0.4);
+}
+
+body.dark input:focus,
+body.dark select:focus,
+body.dark textarea:focus {
+  border-color: #c8a96e;
+}
+
+/* ---- Buttons ---- */
+body.dark .bg-villa-gold {
+  background-color: #c8a96e;
+}
+
+body.dark .hover\:bg-villa-dark:hover {
+  background-color: #f5f0e8;
+  color: #0f0f1a;
+}
+
+/* Etagen-Filter Buttons im Dark Mode */
+body.dark .text-villa-gold {
+  color: #c8a96e;
+}
+
+body.dark .border-white {
+  border-color: rgba(245, 240, 232, 0.6);
+}
+
+/* ---- Tabelle ---- */
+body.dark table th {
+  color: #f5f0e8;
+}
+
+body.dark table td {
+  color: #b8b4ac;
+}
+
+body.dark table tr {
+  border-color: #2a2a3e;
+}
+
+/* ---- Highlight-Bar ---- */
+body.dark .bg-villa-cream .text-villa-charcoal {
+  color: #b8b4ac;
+}
+
+/* ---- Links ---- */
+body.dark a.text-villa-gold {
+  color: #c8a96e;
+}
+
+body.dark a.hover\:text-villa-dark:hover {
+  color: #f5f0e8;
+}
+
+body.dark a.text-villa-charcoal {
+  color: #b8b4ac;
+}
+
+body.dark a.text-villa-charcoal:hover {
+  color: #c8a96e;
+}
+
+/* ---- Weißer Text auf weißem Hintergrund (z.B. in Karten) verhindern ---- */
+body.dark .bg-white .text-villa-dark,
+body.dark .bg-white p,
+body.dark .bg-white h3 {
+  color: #f5f0e8;
+}
+
+body.dark .bg-white .text-villa-charcoal,
+body.dark .bg-white .text-sm {
+  color: #b8b4ac;
+}
+
+/* ---- Hero Overlay etwas stärker im Dark Mode ---- */
+body.dark .bg-villa-dark\/40 {
+  background-color: rgba(15, 15, 26, 0.55);
+}
+
+/* ---- Smooth Transitions auf alles ---- */
+body,
+header,
+main,
+footer,
+section,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+input,
+select,
+textarea,
+table,
+th,
+td,
+tr {
+  transition:
+    background-color 0.7s ease,
+    color 0.7s ease,
+    border-color 0.7s ease,
+    box-shadow 0.7s ease;
+}

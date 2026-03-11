@@ -1,0 +1,72 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-villa-dark text-white py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+      <!-- Spalte 1: Adresse -->
+      <div>
+        <img
+          src="/images/logo-gold-transparent.svg"
+          alt="Studentenvilla Bauseweinallee"
+          class="h-8 mb-4"
+        />
+        <p class="font-sans text-sm text-white/70 leading-relaxed">
+          Bauseweinallee 36c<br />
+          81247 München-Obermenzing
+        </p>
+      </div>
+
+      <!-- Spalte 2: Links -->
+      <div>
+        <h3 class="font-serif text-xl text-villa-gold mb-4">Navigation</h3>
+        <nav class="flex flex-col gap-2">
+          <a
+            href="/#villa"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Die Villa</a
+          >
+          <a
+            href="/#apartments"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Apartments</a
+          >
+          <a
+            href="/#lage"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Lage & Umgebung</a
+          >
+          <a
+            href="/#bewerben"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Bewerben</a
+          >
+        </nav>
+      </div>
+
+      <!-- Spalte 3: Rechtliches -->
+      <div>
+        <h3 class="font-serif text-xl text-villa-gold mb-4">Rechtliches</h3>
+        <nav class="flex flex-col gap-2">
+          <a
+            href="/impressum"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Impressum</a
+          >
+          <a
+            href="/datenschutz"
+            class="font-sans text-sm text-white/70 hover:text-villa-gold transition-colors"
+            >Datenschutzerklärung</a
+          >
+        </nav>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-10 pt-8 text-center">
+      <p class="font-sans text-xs text-white/40">
+        &copy; {currentYear} Studentenvilla Bausewein. Alle Rechte vorbehalten.
+      </p>
+    </div>
+  </div>
+</footer>

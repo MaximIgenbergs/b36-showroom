@@ -1,0 +1,74 @@
+---
+import villaTag from "../assets/images/villa-tag.jpg";
+import villaNacht from "../assets/images/villa-nacht.jpg";
+import { Image } from "astro:assets";
+---
+
+<section
+  id="hero"
+  class="relative min-h-[90svh] flex items-center justify-center overflow-hidden"
+>
+  <!-- Tag-Bild (Standard, sichtbar) -->
+  <Image
+    id="hero-day"
+    src={villaTag}
+    alt="Studentenvilla Bausewein bei Tag"
+    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+    style="opacity: 1;"
+    widths={[640, 1024, 1536, 2048]}
+    sizes="100vw"
+    loading="eager"
+  />
+
+  <!-- Nacht-Bild (versteckt, faded ein bei Dark Mode) -->
+  <Image
+    id="hero-night"
+    src={villaNacht}
+    alt="Studentenvilla Bausewein bei Nacht"
+    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+    style="opacity: 0;"
+    widths={[640, 1024, 1536, 2048]}
+    sizes="100vw"
+    loading="eager"
+  />
+
+  <!-- Dunkler Overlay für Textlesbarkeit -->
+  <div class="absolute inset-0 bg-villa-dark/40"></div>
+
+  <!-- Inhalt -->
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <h1
+      class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-bold leading-tight mb-6"
+    >
+      Studentenvilla Bausewein
+      <span
+        class="block text-villa-gold mt-2 text-2xl sm:text-3xl lg:text-4xl font-normal"
+      >
+        Premium-Wohnen im Herzen Obermenzings
+      </span>
+    </h1>
+
+    <p
+      class="font-sans text-base sm:text-lg text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed"
+    >
+      Modernes Wohnen im Stil einer klassischen Münchner Stadtvilla &mdash;
+      vollmöblierte Apartments mit privatem Bad, Kitchenette und dem Komfort
+      eines 4-Sterne-Hotels. Bezugsfertig. All-inclusive.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="#apartments"
+        class="bg-villa-gold text-white font-sans font-bold text-base px-8 py-4 hover:bg-white hover:text-villa-dark transition-colors"
+      >
+        Apartments entdecken
+      </a>
+      <a
+        href="#bewerben"
+        class="border-2 border-white text-white font-sans font-bold text-base px-8 py-4 hover:bg-white hover:text-villa-dark transition-colors"
+      >
+        Jetzt bewerben
+      </a>
+    </div>
+  </div>
+</section>

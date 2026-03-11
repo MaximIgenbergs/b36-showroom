@@ -1,0 +1,35 @@
+---
+const highlights = [
+  { icon: "hugeicons:house-04", label: "Neubau im<br/>Villenstil" },
+  { icon: "lucide:shower-head", label: "Privates Bad" },
+  { icon: "lucide:cooking-pot", label: "Eigene<br/>Kitchenette" },
+  { icon: "lucide:sparkles", label: "All-in-Miete" },
+  { icon: "lucide:dumbbell", label: "GYM kostenfrei" },
+  { icon: "lucide:train-front", label: "S-Bahn<br/>6 Min. zu Fuß" },
+  { icon: "lucide:lock", label: "XXL-Lager<br/>inklusive" },
+];
+---
+
+<section class="bg-villa-cream py-8 sm:py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap justify-center gap-8 sm:gap-10 lg:gap-14">
+      {
+        highlights.map(({ icon, label }) => (
+          <div class="flex flex-col items-center gap-2.5 min-w-[80px]">
+            <img
+              src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=28&height=28`}
+              alt=""
+              width="28"
+              height="28"
+              loading="eager"
+            />
+            <span
+              class="font-sans text-xs sm:text-sm text-villa-charcoal text-center leading-tight"
+              set:html={label}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

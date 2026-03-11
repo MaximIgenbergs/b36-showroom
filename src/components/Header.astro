@@ -1,0 +1,230 @@
+---
+
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-villa-cream shadow-sm"
+>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <!-- Logo -->
+      <a href="/#hero" class="block">
+        <img
+          src="/images/logo-navy-transparent.svg"
+          alt="Studentenvilla Bauseweinallee"
+          class="logo-light h-8 sm:h-10"
+        />
+        <img
+          src="/images/logo-gold-transparent.svg"
+          alt="Studentenvilla Bauseweinallee"
+          class="logo-dark h-8 sm:h-10 hidden"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a
+          href="/#villa"
+          class="text-sm font-sans text-villa-charcoal hover:text-villa-gold transition-colors"
+          >Die Villa</a
+        >
+        <a
+          href="/#apartments"
+          class="text-sm font-sans text-villa-charcoal hover:text-villa-gold transition-colors"
+          >Apartments</a
+        >
+        <a
+          href="/#ausstattung"
+          class="text-sm font-sans text-villa-charcoal hover:text-villa-gold transition-colors"
+          >Ausstattung</a
+        >
+        <a
+          href="/#gemeinschaft"
+          class="text-sm font-sans text-villa-charcoal hover:text-villa-gold transition-colors"
+          >Gemeinschaft</a
+        >
+        <a
+          href="/#lage"
+          class="text-sm font-sans text-villa-charcoal hover:text-villa-gold transition-colors"
+          >Lage</a
+        >
+
+        <!-- Day/Night Toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 text-villa-charcoal hover:text-villa-gold transition-colors"
+          aria-label="Nachtmodus umschalten"
+        >
+          <svg
+            class="moon-outline w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+          <svg
+            class="moon-filled w-5 h-5 hidden"
+            fill="currentColor"
+            stroke="none"
+            viewBox="0 0 24 24"
+          >
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+
+        <a
+          href="/#bewerben"
+          class="bg-villa-gold text-white text-sm font-sans font-bold px-5 py-2.5 hover:bg-villa-dark transition-colors"
+        >
+          Jetzt bewerben
+        </a>
+      </div>
+
+      <!-- Mobile: Toggle + Hamburger -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button
+          id="theme-toggle-mobile"
+          class="p-2 text-villa-charcoal hover:text-villa-gold transition-colors"
+          aria-label="Nachtmodus umschalten"
+        >
+          <svg
+            class="moon-outline w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+          <svg
+            class="moon-filled w-5 h-5 hidden"
+            fill="currentColor"
+            stroke="none"
+            viewBox="0 0 24 24"
+          >
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+        <button
+          id="mobile-menu-btn"
+          class="p-2 text-villa-dark"
+          aria-label="Menü öffnen"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-3">
+        <a
+          href="/#villa"
+          class="text-base font-sans text-villa-charcoal py-2 border-b border-villa-cream"
+          >Die Villa</a
+        >
+        <a
+          href="/#apartments"
+          class="text-base font-sans text-villa-charcoal py-2 border-b border-villa-cream"
+          >Apartments</a
+        >
+        <a
+          href="/#ausstattung"
+          class="text-base font-sans text-villa-charcoal py-2 border-b border-villa-cream"
+          >Ausstattung</a
+        >
+        <a
+          href="/#gemeinschaft"
+          class="text-base font-sans text-villa-charcoal py-2 border-b border-villa-cream"
+          >Gemeinschaft</a
+        >
+        <a
+          href="/#lage"
+          class="text-base font-sans text-villa-charcoal py-2 border-b border-villa-cream"
+          >Lage</a
+        >
+        <a
+          href="/#bewerben"
+          class="bg-villa-gold text-white text-base font-sans font-bold px-5 py-3 text-center mt-2"
+        >
+          Jetzt bewerben
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="h-16 sm:h-20"></div>
+
+<script>
+  // Hamburger Menü
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => menu?.classList.add("hidden"));
+  });
+
+  // Day/Night Toggle
+  function setTheme(dark) {
+    document.body.classList.toggle("dark", dark);
+
+    // Moon icons
+    document.querySelectorAll(".moon-outline").forEach((el) => {
+      el.classList.toggle("hidden", dark);
+    });
+    document.querySelectorAll(".moon-filled").forEach((el) => {
+      el.classList.toggle("hidden", !dark);
+    });
+
+    // Logo swap
+    document.querySelectorAll(".logo-light").forEach((el) => {
+      el.classList.toggle("hidden", dark);
+    });
+    document.querySelectorAll(".logo-dark").forEach((el) => {
+      el.classList.toggle("hidden", !dark);
+    });
+
+    // Hero images
+    const dayImg = document.getElementById("hero-day");
+    const nightImg = document.getElementById("hero-night");
+    if (dayImg && nightImg) {
+      dayImg.style.opacity = dark ? "0" : "1";
+      nightImg.style.opacity = dark ? "1" : "0";
+    }
+
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }
+
+  const saved = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(saved === "dark" || (!saved && prefersDark));
+
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    setTheme(!document.body.classList.contains("dark"));
+  });
+  document
+    .getElementById("theme-toggle-mobile")
+    ?.addEventListener("click", () => {
+      setTheme(!document.body.classList.contains("dark"));
+    });
+</script>

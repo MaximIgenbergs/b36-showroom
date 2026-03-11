@@ -1,17 +1,893 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import HighlightBar from "../components/HighlightBar.astro";
+import ApplicationForm from "../components/ApplicationForm.astro";
+import Map from "../components/Map.astro";
+import { Image } from "astro:assets";
 
+import villaBev from "../assets/images/villa-bev.jpg";
+import roomStandard from "../assets/images/room-standard.jpg";
+import roomSouterrain01 from "../assets/images/room-souterrain-01.jpg";
+import roomSouterrain02 from "../assets/images/room-souterrain-02.jpg";
+import roomDachgeschoss from "../assets/images/room-dachgeschoss.jpg";
+import lounge from "../assets/images/lounge.jpg";
+import bathroom from "../assets/images/bathroom.jpg";
+import fitness from "../assets/images/fitness.jpg";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Studentenvilla Bausewein — Premium-Studentenapartments München"
+>
+  <Hero />
+  <HighlightBar />
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Einleitung                          -->
+  <!-- ============================================ -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-serif text-3xl sm:text-4xl text-villa-dark mb-8">
+        Willkommen in der Villa Bausewein
+      </h2>
+      <p
+        class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed mb-6"
+      >
+        Die Studentenvilla Bausewein ist eine der außergewöhnlichsten
+        Wohnadressen für Studierende in München. Als moderner Neubau im
+        klassischen Villenstil vereint das Gebäude an der Bauseweinallee 36c in
+        München-Obermenzing stilvolle Architektur mit einem Wohnkomfort, den man
+        sonst nur aus 4-Sterne-Hotels kennt.
+      </p>
+      <p
+        class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed"
+      >
+        Jedes der vollmöblierten Einzelapartments verfügt über ein privates
+        Badezimmer mit Regendusche, eine eigene Kitchenette mit
+        Induktionskochfeld, Mikrowelle mit Backofenfunktion und kleiner
+        Geschirrspülmaschine. Die All-in-Miete schließt Strom, Wasser, Heizung
+        und WLAN ein. Einfach einziehen, ankommen, wohlfühlen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Die Villa                           -->
+  <!-- ============================================ -->
+  <section id="villa" class="py-16 sm:py-24 bg-villa-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-6 text-center"
+      >
+        Die Villa
+      </h2>
+
+      <div class="max-w-3xl mx-auto text-center mb-6">
+        <p
+          class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed"
+        >
+          Die Studentenvilla Bausewein wurde als elegante Stadtvilla im Münchner
+          Westen neu errichtet. Klassische Proportionen, große Sprossenfenster,
+          feine Fassadengliederung und ein markantes Mansarddach mit
+          Dachbegrünung verleihen dem Gebäude seinen zeitlosen, repräsentativen
+          Charakter.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p
+          class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed"
+        >
+          Hinter der klassischen Fassade verbirgt sich modernste Haustechnik:
+          Fußbodenheizung, hochwertige Wärmedämmung, Photovoltaikanlage und
+          energieeffiziente Gebäudetechnik entsprechen den aktuellsten
+          Standards. Das Gebäude verfügt über eine rechtsgültige Baugenehmigung
+          und befindet sich im fortgeschrittenen Ausbau.
+        </p>
+      </div>
+
+      <div class="mb-12">
+        <Image
+          src={villaBev}
+          alt="Vogelperspektive der Studentenvilla Bausewein"
+          class="w-full h-auto shadow-sm"
+          loading="lazy"
+          widths={[640, 1024, 1536]}
+          sizes="(max-width: 1024px) 100vw, 1152px"
+        />
+      </div>
+
+      <!-- Gebäudedaten -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
+      >
+        {
+          [
+            ["Adresse", "Bauseweinallee 36c, 81247 München-Obermenzing"],
+            ["Gebäudetyp", "Moderner Neubau im klassischen Stadtvillenstil"],
+            ["Apartments", "24 Einzelapartments + 1 Doppelapartment"],
+            [
+              "Geschosse",
+              "Untergeschoss, Erdgeschoss, Obergeschoss, Dachgeschoss",
+            ],
+            [
+              "Energie",
+              "Fußbodenheizung, Photovoltaik, extensive Dachbegrünung",
+            ],
+            ["Fertigstellung", "Herbst / Winter 2026 (geplant)"],
+          ].map(([title, text]) => (
+            <div class="bg-white p-6 shadow-sm">
+              <h3 class="font-serif text-villa-gold text-lg mb-2">{title}</h3>
+              <p class="font-sans text-sm text-villa-charcoal">{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Apartments & Grundrisse             -->
+  <!-- ============================================ -->
+  <section id="apartments" class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-4 text-center"
+      >
+        Apartments & Grundrisse
+      </h2>
+      <p
+        class="font-sans text-base text-villa-charcoal max-w-2xl mx-auto text-center mb-12"
+      >
+        Von kompakten Einzelapartments bis zum großzügigen Doppelapartment:
+        Finden Sie Ihr neues Zuhause in der Villa Bausewein.
+      </p>
+
+      <!-- Etagen-Filter -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <button
+          class="etage-filter is-active font-sans text-sm px-5 py-2 border border-villa-gold bg-villa-gold text-white transition-colors"
+          data-etage="alle"
+        >
+          Alle Etagen
+        </button>
+        <button
+          class="etage-filter font-sans text-sm px-5 py-2 border border-villa-gold text-villa-gold hover:bg-villa-gold hover:text-white transition-colors"
+          data-etage="eg"
+        >
+          Erdgeschoss
+        </button>
+        <button
+          class="etage-filter font-sans text-sm px-5 py-2 border border-villa-gold text-villa-gold hover:bg-villa-gold hover:text-white transition-colors"
+          data-etage="og"
+        >
+          Obergeschoss
+        </button>
+        <button
+          class="etage-filter font-sans text-sm px-5 py-2 border border-villa-gold text-villa-gold hover:bg-villa-gold hover:text-white transition-colors"
+          data-etage="dg"
+        >
+          Dachgeschoss
+        </button>
+      </div>
+
+      <!-- Apartment-Karten -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="apartment-grid">
+        <!-- EG: Apartments E1–E8 -->
+        <div
+          class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
+          data-etage="eg"
+        >
+          <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={roomSouterrain01}
+              alt="Erdgeschoss-Apartment mit Terrasse"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-2">
+              Apartments E1 bis E8
+            </h3>
+            <p class="font-sans text-sm text-villa-gold mb-3">
+              Erdgeschoss · ca. 18 bis 24 m² · mit Terrasse
+            </p>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Acht vollmöblierte Apartments mit eigenem Zugang zur Terrasse und
+              Gartenbereich. Helles Parkett, deckenhohe Fenster und hochwertige
+              Materialien. Privates Badezimmer mit Regendusche und
+              Handtuchwärmer, vollausgestattete Kitchenette mit
+              Induktionskochfeld, Mikrowelle mit Backofenfunktion und
+              Geschirrspülmaschine.
+            </p>
+            <a
+              href="#bewerben"
+              class="inline-block font-sans text-sm font-bold text-villa-gold hover:text-villa-dark transition-colors"
+            >
+              Mietpreis auf Anfrage →
+            </a>
+          </div>
+        </div>
+
+        <!-- OG: Apartments O1–O8 -->
+        <div
+          class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
+          data-etage="og"
+        >
+          <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={roomStandard}
+              alt="Obergeschoss-Apartment mit Schlafcouch und Kitchenette"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-2">
+              Apartments O1 bis O8
+            </h3>
+            <p class="font-sans text-sm text-villa-gold mb-3">
+              Obergeschoss · ca. 18 bis 24 m² · mit Balkon
+            </p>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Acht vollmöblierte Apartments im ersten und zweiten Obergeschoss
+              mit eigenem Balkon. Identische Premiumausstattung wie im
+              Erdgeschoss: privates Bad mit Regendusche, eigene Kitchenette,
+              Fußbodenheizung. Der Balkon bietet Blick in den grünen
+              Gartenbereich.
+            </p>
+            <a
+              href="#bewerben"
+              class="inline-block font-sans text-sm font-bold text-villa-gold hover:text-villa-dark transition-colors"
+            >
+              Mietpreis auf Anfrage →
+            </a>
+          </div>
+        </div>
+
+        <!-- DG: Apartments D1–D4 -->
+        <div
+          class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
+          data-etage="dg"
+        >
+          <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={roomSouterrain02}
+              alt="Dachgeschoss-Apartment mit Dachschräge"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-2">
+              Apartments D1 bis D4
+            </h3>
+            <p class="font-sans text-sm text-villa-gold mb-3">
+              Dachgeschoss · ca. 18 bis 22 m² · mit Balkon
+            </p>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Vier Einzelapartments unter dem markanten Mansarddach mit eigenem
+              Balkon. Die besondere Raumgeometrie mit Dachschrägen verleiht
+              diesen Apartments einen einzigartigen Charakter. Gleiche
+              Premiumausstattung: privates Bad, eigene Kitchenette,
+              Fußbodenheizung.
+            </p>
+            <a
+              href="#bewerben"
+              class="inline-block font-sans text-sm font-bold text-villa-gold hover:text-villa-dark transition-colors"
+            >
+              Mietpreis auf Anfrage →
+            </a>
+          </div>
+        </div>
+
+        <!-- DG: Doppelapartment D3 -->
+        <div
+          class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
+          data-etage="dg"
+        >
+          <div <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={roomDachgeschoss}
+              alt="Großzügiges Doppelapartment"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="font-serif text-xl text-villa-dark">
+                Doppelapartment D3
+              </h3>
+              <span class="font-sans text-xs bg-villa-gold text-white px-2 py-1"
+                >Premium</span
+              >
+            </div>
+            <p class="font-sans text-sm text-villa-gold mb-3">
+              Dachgeschoss · ca. 34 m² · mit Balkon
+            </p>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Das großzügigste Apartment der Villa Bausewein. Auf rund 34 m²
+              bietet das Doppelapartment Platz für zwei Personen oder besonders
+              großzügiges Wohnen für eine Person. Eigenes Badezimmer,
+              vollausgestattete Kitchenette und Balkon mit Blick ins Grüne.
+            </p>
+            <a
+              href="#bewerben"
+              class="inline-block font-sans text-sm font-bold text-villa-gold hover:text-villa-dark transition-colors"
+            >
+              Mietpreis auf Anfrage →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll(".etage-filter");
+    const cards = document.querySelectorAll(".apartment-card");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const etage = btn.getAttribute("data-etage");
+
+        buttons.forEach((b) => {
+          b.classList.remove("bg-villa-gold", "text-white", "is-active");
+          b.classList.add("text-villa-gold");
+        });
+        btn.classList.add("bg-villa-gold", "text-white", "is-active");
+        btn.classList.remove("text-villa-gold");
+
+        cards.forEach((card) => {
+          if (etage === "alle" || card.getAttribute("data-etage") === etage) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Ausstattung                         -->
+  <!-- ============================================ -->
+  <section id="ausstattung" class="py-16 sm:py-24 bg-villa-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-4 text-center"
+      >
+        Ausstattung
+      </h2>
+      <p
+        class="font-sans text-base text-villa-charcoal max-w-2xl mx-auto text-center mb-12"
+      >
+        Jedes Apartment ist vollständig möbliert und sofort bezugsfertig. Die
+        Ausstattung entspricht dem Standard eines 4-Sterne-Hotels.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <!-- Badezimmer (hat Bild) -->
+        <div class="bg-white shadow-sm overflow-hidden">
+          <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={bathroom}
+              alt="Privates Badezimmer mit Regendusche"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl text-villa-dark mb-4">
+              Privates Badezimmer
+            </h3>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Jedes Apartment verfügt über ein vollständig privates Badezimmer.
+              Kein geteiltes Bad, keine Gemeinschaftsdusche.
+            </p>
+            <div class="font-sans text-sm text-villa-charcoal space-y-2">
+              <p>✓ Bodengleiche Regendusche</p>
+              <p>✓ Modernes Waschbecken und WC</p>
+              <p>✓ Beheizter Handtuchwärmer</p>
+              <p>✓ Hochwertige Bodenfliesen</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchenette (Platzhalter) -->
+        <div class="bg-white shadow-sm overflow-hidden">
+          <div
+            class="aspect-[3/2] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <p class="text-villa-charcoal/30 text-sm font-sans">
+              Kitchenette-Bild hier einfügen
+            </p>
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl text-villa-dark mb-4">
+              Vollausgestattete Kitchenette
+            </h3>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Konzipiert für echtes Kochen, nicht nur zum Aufwärmen. Diese
+              Ausstattung ist für ein Studentenapartment einzigartig in München.
+            </p>
+            <div class="font-sans text-sm text-villa-charcoal space-y-2">
+              <p>✓ 2-Platten-Induktionskochfeld</p>
+              <p>✓ Mikrowelle mit Backofenfunktion</p>
+              <p>✓ Kompakte Geschirrspülmaschine</p>
+              <p>✓ Kühlschrank mit ausreichend Kapazität</p>
+              <p>✓ Spüle</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Möblierung (Platzhalter) -->
+        <div class="bg-white shadow-sm overflow-hidden">
+          <div
+            class="aspect-[3/2] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <p class="text-villa-charcoal/30 text-sm font-sans">
+              Möblierung-Bild hier einfügen
+            </p>
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl text-villa-dark mb-4">
+              Möblierung & Technik
+            </h3>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Sofort bezugsfertig. Koffer auspacken, einziehen, wohlfühlen.
+            </p>
+            <div class="font-sans text-sm text-villa-charcoal space-y-2">
+              <p>✓ Bett (Komfortgröße) oder breite Schlafklappcouch</p>
+              <p>✓ Kleiderschrank mit ausreichend Stauraum</p>
+              <p>✓ Ergonomischer Schreibtisch mit Stuhl</p>
+              <p>✓ Flachbildschirm-TV</p>
+              <p>✓ Fußbodenheizung mit individueller Regelung</p>
+              <p>✓ Rollläden an allen Fenstern</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lagerraum (Platzhalter) -->
+        <div class="bg-white shadow-sm overflow-hidden">
+          <div
+            class="aspect-[3/2] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <p class="text-villa-charcoal/30 text-sm font-sans">
+              Lagerraum-Bild hier einfügen
+            </p>
+          </div>
+          <div class="p-8">
+            <h3 class="font-serif text-2xl text-villa-dark mb-4">
+              XXL-Lagerraum inklusive
+            </h3>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Im gesicherten Untergeschoss steht für jeden Mieter ein
+              persönlicher, abschließbarer Lagerraum (XXL-Spind) zur Verfügung.
+            </p>
+            <div class="font-sans text-sm text-villa-charcoal space-y-2">
+              <p>✓ Platz für 8 bis 10 Umzugskartons</p>
+              <p>✓ Saisonale Kleidung, Sportgeräte, Koffer</p>
+              <p>✓ Abschließbar und gesichert</p>
+              <p>✓ Im Mietpreis inkludiert</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Gemeinschaft & Services             -->
+  <!-- ============================================ -->
+  <section id="gemeinschaft" class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-4 text-center"
+      >
+        Gemeinschaft & Services
+      </h2>
+      <p
+        class="font-sans text-base text-villa-charcoal max-w-2xl mx-auto text-center mb-16"
+      >
+        Die Gemeinschaftsbereiche machen die Villa Bausewein zu mehr als nur
+        einer Wohnadresse. Alle Einrichtungen stehen den Bewohnern kostenfrei
+        zur Verfügung.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Fitnessraum (mit Bild) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div class="aspect-[16/9] overflow-hidden">
+            <Image
+              src={fitness}
+              alt="Villa Vital Fitnessbereich mit professionellen Geräten"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">Villa Vital</h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              Modern ausgestatteter Fitnessbereich im Untergeschoss, rund um die
+              Uhr kostenfrei zugänglich. Kraft- und Ausdauertraining direkt im
+              Haus, ohne Mitgliedsbeiträge. Vor der Vorlesung oder nach dem
+              Lernen: immer verfügbar.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lounge (mit Bild) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div class="aspect-[16/9] overflow-hidden">
+            <Image
+              src={lounge}
+              alt="Villa Lounge mit PlayStation und Großbild-TV"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">
+              Villa Lounge
+            </h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              Der gesellschaftliche Mittelpunkt der Villa. PlayStation,
+              Großbildfernseher für Sportabende und Filmabende, komfortable
+              Sitzmöglichkeiten. Der Ort, um aus dem eigenen Zimmer
+              herauszukommen und neue Bekanntschaften zu schließen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Waschraum (Platzhalter) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div
+            class="aspect-[16/9] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <span class="text-6xl opacity-30">👕</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">
+              Laundry Lounge
+            </h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              Moderne Waschmaschinen und Trockner im Untergeschoss. Die
+              Abrechnung erfolgt bequem über WeWash by Bosch per App oder Chip.
+              Kein Münzgeld, keine Zettelwirtschaft. Transparent und
+              unkompliziert.
+            </p>
+          </div>
+        </div>
+
+        <!-- Außenbereich (Platzhalter) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div
+            class="aspect-[16/9] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <span class="text-6xl opacity-30">🌿</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">
+              Garten & Grill
+            </h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              Gemeinschaftsgrillplatz für gesellige Sommerabende unter freiem
+              Himmel. Gartenbereiche und Terrassen bieten Raum zum Entspannen
+              und Lernen im Freien.
+            </p>
+          </div>
+        </div>
+
+        <!-- E-Mobilität (Platzhalter) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div
+            class="aspect-[16/9] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <span class="text-6xl opacity-30">⚡</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">
+              Elektromobilität
+            </h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              26 überdachte Fahrradstellplätze, davon 4 mit E-Bike-Ladepunkten.
+              2 E-Ladestationen für Elektroautos. Ladekosten werden
+              verbrauchsabhängig nach MID-Standard abgerechnet.
+            </p>
+          </div>
+        </div>
+
+        <!-- App (Platzhalter) -->
+        <div
+          class="bg-white shadow-sm border border-villa-cream overflow-hidden"
+        >
+          <div
+            class="aspect-[16/9] overflow-hidden bg-villa-cream flex items-center justify-center"
+          >
+            <span class="text-6xl opacity-30">📱</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-3">Villa-App</h3>
+            <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+              Die exklusive Apartment-Villa-App verbindet alle Bewohner.
+              Schwarzes Brett, Verabredungen, Informationen des Managements:
+              alles an einem Ort. Wer möchte, bleibt vernetzt; wer Ruhe braucht,
+              hat sie in seinem Apartment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: Lage & Umgebung                     -->
+  <!-- ============================================ -->
+  <section id="lage" class="py-16 sm:py-24 bg-villa-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-6 text-center"
+      >
+        Lage & Umgebung
+      </h2>
+
+      <div class="max-w-3xl mx-auto text-center mb-6">
+        <p
+          class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed"
+        >
+          München-Obermenzing gehört zu den begehrtesten und grünsten Wohnlagen
+          im Münchner Westen. Baumbestandene Grundstücke, gepflegte
+          Villenviertel und eine intakte Nachbarschaft prägen das Umfeld der
+          Bauseweinallee.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p
+          class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed"
+        >
+          Die Nähe zum Nymphenburger Schloss mit seinen weitläufigen
+          Parkanlagen, zum Botanischen Garten und zum naturnahen Würm-Grünzug
+          bis Schloss Blutenburg macht diese Adresse einzigartig. Wer nach einem
+          langen Lerntag Luft schnappen möchte, findet vor der Haustür echte
+          Münchner Parkidylle.
+        </p>
+      </div>
+
+      <!--
+        KARTE
+      -->
+      <div class="mb-12">
+        <Map />
+      </div>
+
+      <!-- ÖPNV-Anbindung -->
+      <h3 class="font-serif text-2xl text-villa-dark mb-6 text-center">
+        Verkehrsanbindung
+      </h3>
+      <div class="overflow-x-auto mb-12">
+        <table class="w-full max-w-3xl mx-auto">
+          <thead>
+            <tr class="border-b-2 border-villa-gold">
+              <th class="font-serif text-left py-3 pr-4 text-villa-dark"
+                >Ziel</th
+              >
+              <th class="font-serif text-left py-3 pr-4 text-villa-dark"
+                >Verbindung</th
+              >
+              <th class="font-serif text-left py-3 text-villa-dark"
+                >Entfernung</th
+              >
+            </tr>
+          </thead>
+          <tbody class="font-sans text-sm text-villa-charcoal">
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">Bus Karwinskistraße Ost</td>
+              <td class="py-3 pr-4">Linie 158</td>
+              <td class="py-3">unter 1 Min. zu Fuß</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">Tram Amalienburgstraße</td>
+              <td class="py-3 pr-4">Tram 12</td>
+              <td class="py-3">8 Min. mit Bus 158</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">S-Bahn Obermenzing</td>
+              <td class="py-3 pr-4">S2</td>
+              <td class="py-3">6 Min. zu Fuß</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">Hauptbahnhof München</td>
+              <td class="py-3 pr-4">S2</td>
+              <td class="py-3">ca. 18 Min. Fahrzeit</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">LMU München</td>
+              <td class="py-3 pr-4">S2</td>
+              <td class="py-3">ca. 18 bis 22 Min.</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">TU München</td>
+              <td class="py-3 pr-4">S2</td>
+              <td class="py-3">ca. 20 bis 25 Min.</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">Hochschule München</td>
+              <td class="py-3 pr-4">S2 + U/Bus</td>
+              <td class="py-3">ca. 20 bis 30 Min.</td>
+            </tr>
+            <tr class="border-b border-villa-cream">
+              <td class="py-3 pr-4">Flughafen München</td>
+              <td class="py-3 pr-4">S2 + S1</td>
+              <td class="py-3">ca. 70 Min.</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4">Autobahn A8</td>
+              <td class="py-3 pr-4">PKW</td>
+              <td class="py-3">ca. 2,0 km</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Nahversorgung -->
+      <h3 class="font-serif text-2xl text-villa-dark mb-6 text-center">
+        Nahversorgung & Erholung
+      </h3>
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="font-sans text-base text-villa-charcoal leading-relaxed">
+          Supermärkte, Drogerien und Fachgeschäfte des täglichen Bedarfs
+          befinden sich in den nahen Karwinskihöfen sowie an der Verdistraße. In
+          wenigen Gehminuten erreicht man Hartmannshofen mit idyllischer
+          Parklandschaft und beliebter Gastronomie, darunter das Restaurant
+          Menzingers und die Fasanerie mit gemütlichem Biergarten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SEKTION: All-in-Miete & Bewerbung            -->
+  <!-- ============================================ -->
+  <section id="bewerben" class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-serif text-3xl sm:text-4xl text-villa-dark mb-6 text-center"
+      >
+        All-in-Miete & Bewerbung
+      </h2>
+      <p
+        class="font-sans text-base sm:text-lg text-villa-charcoal leading-relaxed max-w-3xl mx-auto text-center mb-16"
+      >
+        Bei der Studentenvilla Bausewein gibt es keine Überraschungen beim Blick
+        auf die Nebenkosten. Die monatliche All-in-Miete deckt alles ab.
+        Einziehen, wohnen, entspannen.
+      </p>
+
+      <!-- Leistungsübersicht -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
+      >
+        <!-- Inklusive -->
+        <div class="bg-villa-cream p-8">
+          <h3 class="font-serif text-xl text-villa-dark mb-6">
+            In der Miete enthalten
+          </h3>
+          <div class="font-sans text-sm text-villa-charcoal space-y-3">
+            <p>✅ Wohnraummiete</p>
+            <p>✅ Vollmöblierung</p>
+            <p>✅ Strom</p>
+            <p>✅ Wasser</p>
+            <p>✅ Heizung (Fußbodenheizung)</p>
+            <p>✅ WLAN (studentischer Umfang)</p>
+            <p>✅ XXL-Lagerraum im UG</p>
+            <p>✅ Nutzung Fitnessraum</p>
+            <p>✅ Nutzung Gemeinschaftslounge</p>
+            <p>✅ Wartung & Instandhaltung</p>
+          </div>
+        </div>
+
+        <!-- Gesondert -->
+        <div class="bg-white border border-villa-cream p-8">
+          <h3 class="font-serif text-xl text-villa-dark mb-6">
+            Gesondert berechnet
+          </h3>
+          <div class="font-sans text-sm text-villa-charcoal space-y-3">
+            <p>⚡ E-Laden PKW (Verbrauch, MID-Standard)</p>
+            <p>🚲 E-Laden Fahrräder (Verbrauch, MID-Standard)</p>
+            <p>👕 Waschen & Trocknen (WeWash, per App)</p>
+            <p>🅿️ PKW-Stellplatz (falls verfügbar)</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-villa-cream">
+            <h4 class="font-serif text-lg text-villa-dark mb-4">
+              Mietbedingungen
+            </h4>
+            <div class="font-sans text-sm text-villa-charcoal space-y-2">
+              <p>
+                <span class="text-villa-gold font-bold">Mindestlaufzeit:</span> 12
+                Monate
+              </p>
+              <p>
+                <span class="text-villa-gold font-bold">Kündigung:</span> 3 Monate
+                zum Vertragsende
+              </p>
+              <p>
+                <span class="text-villa-gold font-bold">Verlängerung:</span> Automatisch
+                um 6 Monate bei gültiger Immatrikulation
+              </p>
+              <p>
+                <span class="text-villa-gold font-bold">Voraussetzung:</span> Immatrikulation
+                an staatl. Hochschule in Bayern
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Makler-Hinweis -->
+      <div class="max-w-3xl mx-auto text-center mb-12 p-8 bg-villa-cream">
+        <h3 class="font-serif text-xl text-villa-dark mb-4">
+          Vermietung über Makler
+        </h3>
+        <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+          Ihre Bewerbung als Mieter erfolgt über einen beauftragten
+          Immobilienmakler. Dieser übernimmt die erste Kontaktaufnahme, Prüfung
+          Ihrer Unterlagen sowie die Terminvergabe für Besichtigungen. Im Falle
+          eines Mietabschlusses fällt die gesetzliche Maklerprovision an, die
+          vom Mieter zu tragen ist. Bitte senden Sie Ihre Bewerbung über das
+          nachfolgende Formular.
+        </p>
+      </div>
+
+      <!-- Bewerbungsformular -->
+      <div class="max-w-2xl mx-auto">
+        <h3 class="font-serif text-2xl text-villa-dark mb-8 text-center">
+          Bewerbung einreichen
+        </h3>
+        <ApplicationForm />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

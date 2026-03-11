@@ -1,0 +1,124 @@
+---
+
+---
+
+<div id="map" class="w-full aspect-video min-h-[300px] shadow-sm"></div>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script>
+  async function initMap() {
+    const L =
+      await import("https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js");
+
+    const map = L.map("map", {
+      scrollWheelZoom: false, // verhindert versehentliches Zoomen beim Scrollen
+    }).setView([48.1634, 11.4876], 14);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Villa Bausewein (gold icon)
+    const villaIcon = L.divIcon({
+      className: "",
+      html: `<div style="background:#C8A96E;width:16px;height:16px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>`,
+      iconSize: [16, 16],
+      iconAnchor: [8, 8],
+    });
+
+    L.marker([48.16805145707203, 11.475803645778823], { icon: villaIcon })
+      .addTo(map)
+      .bindPopup(
+        '<strong style="font-size:14px;">Studentenvilla Bausewein</strong><br>Bauseweinallee 36c',
+      )
+      .openPopup();
+
+    // POIs
+    const pois = [
+      // ÖPNV
+      {
+        pos: [48.16429496042209, 11.477997051789538],
+        text: "🚆 S-Bahn Obermenzing (S2)",
+      },
+      {
+        pos: [48.16806943545076, 11.475555328693813],
+        text: "🚌 Karwinskistraße Ost (Bus 158)",
+      },
+      {
+        pos: [48.16572746868982, 11.493962029181963],
+        text: "🚋 Amalienburgstraße (Tram 12)",
+      },
+      {
+        pos: [48.14056298234051, 11.55816709466869],
+        text: "🚆 Hauptbahnhof München",
+      },
+
+      // Hochschulen
+      {
+        pos: [48.15107594626442, 11.58022567828538],
+        text: "🎓 LMU München (Hauptgebäude)",
+      },
+      {
+        pos: [48.14892947024417, 11.568660870353254],
+        text: "🎓 TUM Stammgelände",
+      },
+      { pos: [48.26571837567169, 11.67115604531058], text: "🎓 TUM Garching" },
+      {
+        pos: [48.153533204925665, 11.553242451302534],
+        text: "🎓 Hochschule München (Lothstraße)",
+      },
+
+      // Sehenswürdigkeiten & Erholung
+      {
+        pos: [48.15842484957924, 11.503292828569153],
+        text: "🏛️ Schloss Nymphenburg",
+      },
+      {
+        pos: [48.16452113135502, 11.50166655771864],
+        text: "🌿 Botanischer Garten",
+      },
+      {
+        pos: [48.15593368072133, 11.494515570284566],
+        text: "🌳 Schlosspark Nymphenburg",
+      },
+      {
+        pos: [48.16300491299479, 11.456724840869073],
+        text: "🏰 Schloss Blutenburg",
+      },
+
+      // Nahversorgung & Gastronomie
+      {
+        pos: [48.16840972630406, 11.466020993665207],
+        text: "🛒 Karwinskihöfe (Nahversorgung)",
+      },
+      {
+        pos: [48.16437510535677, 11.476341021896452],
+        text: "🛒 Verdistraße (Nahversorgung)",
+      },
+      // { pos: [48.162, 11.478], text: "🍺 Fasanerie (Biergarten)" }, // scheint nicht mehr zu existieren?
+      {
+        pos: [48.17148583752045, 11.479793246742728],
+        text: "🍽️ Restaurant Menzingers", // bisschen random
+      },
+    ];
+
+    const poiIcon = L.divIcon({
+      className: "",
+      html: `<div style="background:#1A1A2E;width:10px;height:10px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>`,
+      iconSize: [10, 10],
+      iconAnchor: [5, 5],
+    });
+
+    pois.forEach(({ pos, text }) => {
+      L.marker(pos, { icon: poiIcon }).addTo(map).bindPopup(text);
+    });
+  }
+
+  initMap();
+</script>
