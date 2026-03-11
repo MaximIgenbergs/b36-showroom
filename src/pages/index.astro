@@ -804,7 +804,6 @@ import fitness from "../assets/images/fitness.jpg";
         Blick auf die Nebenkosten. Die monatliche All-in-Miete deckt alles ab.
         Einziehen, wohnen, entspannen.
       </p>
-
       <!-- Leistungsübersicht -->
       <div
         class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
@@ -815,16 +814,37 @@ import fitness from "../assets/images/fitness.jpg";
             In der Miete enthalten
           </h3>
           <div class="font-sans text-sm text-villa-charcoal space-y-3">
-            <p>✅ Wohnraummiete</p>
-            <p>✅ Vollmöblierung</p>
-            <p>✅ Strom</p>
-            <p>✅ Wasser</p>
-            <p>✅ Heizung (Fußbodenheizung)</p>
-            <p>✅ WLAN (studentischer Umfang)</p>
-            <p>✅ XXL-Lagerraum im UG</p>
-            <p>✅ Nutzung Fitnessraum</p>
-            <p>✅ Nutzung Gemeinschaftslounge</p>
-            <p>✅ Wartung & Instandhaltung</p>
+            {
+              [
+                { icon: "lucide:home", text: "Wohnraummiete" },
+                { icon: "lucide:sofa", text: "Vollmöblierung" },
+                { icon: "lucide:zap", text: "Strom" },
+                { icon: "lucide:droplets", text: "Wasser" },
+                {
+                  icon: "lucide:thermometer",
+                  text: "Heizung (Fußbodenheizung)",
+                },
+                { icon: "lucide:wifi", text: "WLAN (studentischer Umfang)" },
+                { icon: "lucide:lock", text: "XXL-Lagerraum im UG" },
+                { icon: "lucide:dumbbell", text: "Nutzung Fitnessraum" },
+                {
+                  icon: "lucide:armchair",
+                  text: "Nutzung Gemeinschaftslounge",
+                },
+                { icon: "lucide:wrench", text: "Wartung & Instandhaltung" },
+              ].map(({ icon, text }) => (
+                <div class="flex items-center gap-3">
+                  <img
+                    src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
+                    alt=""
+                    width="18"
+                    height="18"
+                    class="shrink-0"
+                  />
+                  <span>{text}</span>
+                </div>
+              ))
+            }
           </div>
         </div>
 
@@ -834,10 +854,37 @@ import fitness from "../assets/images/fitness.jpg";
             Gesondert berechnet
           </h3>
           <div class="font-sans text-sm text-villa-charcoal space-y-3">
-            <p>⚡ E-Laden PKW (Verbrauch, MID-Standard)</p>
-            <p>🚲 E-Laden Fahrräder (Verbrauch, MID-Standard)</p>
-            <p>👕 Waschen & Trocknen (WeWash, per App)</p>
-            <p>🅿️ PKW-Stellplatz (falls verfügbar)</p>
+            {
+              [
+                {
+                  icon: "lucide:plug-zap",
+                  text: "E-Laden PKW (Verbrauch, MID-Standard)",
+                },
+                {
+                  icon: "lucide:bike",
+                  text: "E-Laden Fahrräder (Verbrauch, MID-Standard)",
+                },
+                {
+                  icon: "lucide:washing-machine",
+                  text: "Waschen & Trocknen (WeWash, per App)",
+                },
+                {
+                  icon: "lucide:square-parking",
+                  text: "PKW-Stellplatz (falls verfügbar)",
+                },
+              ].map(({ icon, text }) => (
+                <div class="flex items-center gap-3">
+                  <img
+                    src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
+                    alt=""
+                    width="18"
+                    height="18"
+                    class="shrink-0"
+                  />
+                  <span>{text}</span>
+                </div>
+              ))
+            }
           </div>
 
           <div class="mt-8 pt-6 border-t border-villa-cream">
