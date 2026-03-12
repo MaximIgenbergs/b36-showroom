@@ -152,6 +152,12 @@ import fitness from "../assets/images/fitness.jpg";
         </button>
         <button
           class="etage-filter font-sans text-sm px-5 py-2 border border-villa-gold text-villa-gold hover:bg-villa-gold hover:text-white transition-colors"
+          data-etage="ug"
+        >
+          Untergeschoss
+        </button>
+        <button
+          class="etage-filter font-sans text-sm px-5 py-2 border border-villa-gold text-villa-gold hover:bg-villa-gold hover:text-white transition-colors"
           data-etage="eg"
         >
           Erdgeschoss
@@ -172,15 +178,15 @@ import fitness from "../assets/images/fitness.jpg";
 
       <!-- Apartment-Karten -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="apartment-grid">
-        <!-- EG: Apartments E1–E8 -->
+        <!-- UG: Apartments E1–E4 (Souterrain) -->
         <div
           class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
-          data-etage="eg"
+          data-etage="ug"
         >
           <div class="aspect-[3/2] overflow-hidden">
             <Image
               src={roomSouterrain01}
-              alt="Erdgeschoss-Apartment mit Terrasse"
+              alt="Souterrain-Apartment mit Terrasse und Gartenblick"
               class="w-full h-full object-cover"
               loading="lazy"
               widths={[400, 800, 1200, 1600]}
@@ -189,7 +195,49 @@ import fitness from "../assets/images/fitness.jpg";
           </div>
           <div class="p-6">
             <h3 class="font-serif text-xl text-villa-dark mb-2">
-              Apartments E1 bis E8
+              Apartments E1 bis E4
+            </h3>
+            <p class="font-sans text-sm text-villa-gold mb-3">
+              Untergeschoss (Souterrain) · ca. 18 bis 22 m² · mit Terrasse
+            </p>
+            <p
+              class="font-sans text-sm text-villa-charcoal leading-relaxed mb-4"
+            >
+              Vier vollmöblierte Souterrain-Apartments mit direktem Zugang zur
+              Terrasse und zum Gartenbereich. Bodentiefe Fenster sorgen für viel
+              Tageslicht. Privates Badezimmer mit Regendusche und
+              Handtuchwärmer, vollausgestattete Kitchenette mit
+              Induktionskochfeld, Mikrowelle mit Backofenfunktion und
+              Geschirrspülmaschine. Die Nähe zu den Gemeinschaftsflächen im
+              gleichen Geschoss ist ein zusätzlicher Vorteil.
+            </p>
+            <a
+              href="#bewerben"
+              class="inline-block font-sans text-sm font-bold text-villa-gold hover:text-villa-dark transition-colors"
+            >
+              Mietpreis auf Anfrage →
+            </a>
+          </div>
+        </div>
+
+        <!-- EG: Apartments E5–E12 -->
+        <div
+          class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
+          data-etage="eg"
+        >
+          <div class="aspect-[3/2] overflow-hidden">
+            <Image
+              src={roomStandard}
+              alt="Erdgeschoss-Apartment mit Kitchenette und Schlafcouch"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              widths={[400, 800, 1200, 1600]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif text-xl text-villa-dark mb-2">
+              Apartments E5 bis E12
             </h3>
             <p class="font-sans text-sm text-villa-gold mb-3">
               Erdgeschoss · ca. 18 bis 24 m² · mit Terrasse
@@ -298,7 +346,7 @@ import fitness from "../assets/images/fitness.jpg";
           class="apartment-card bg-white shadow-sm border border-villa-cream overflow-hidden"
           data-etage="dg"
         >
-          <div <div class="aspect-[3/2] overflow-hidden">
+          <div class="aspect-[3/2] overflow-hidden">
             <Image
               src={roomDachgeschoss}
               alt="Großzügiges Doppelapartment"
