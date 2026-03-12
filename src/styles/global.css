@@ -36,6 +36,12 @@
   h4 {
     font-family: var(--font-serif);
   }
+
+  button,
+  [type="submit"],
+  [type="button"] {
+    cursor: pointer;
+  }
 }
 
 /* ===================== DARK MODE ===================== */
