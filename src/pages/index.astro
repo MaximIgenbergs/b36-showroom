@@ -383,7 +383,7 @@ import fitness from "../assets/images/fitness.jpg";
         Ausstattung entspricht dem Standard eines 4-Sterne-Hotels.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Badezimmer (hat Bild) -->
         <div class="bg-white shadow-sm overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
@@ -805,128 +805,129 @@ import fitness from "../assets/images/fitness.jpg";
         Einziehen, wohnen, entspannen.
       </p>
 
-      <!-- Leistungsübersicht -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
-      >
-        <!-- Inklusive -->
-        <div class="bg-villa-cream p-8">
-          <h3 class="font-serif text-xl text-villa-dark mb-6">
-            In der Miete enthalten
-          </h3>
-          <div class="font-sans text-sm text-villa-charcoal space-y-3">
-            {
-              [
-                { icon: "lucide:home", text: "Wohnraummiete" },
-                { icon: "lucide:sofa", text: "Vollmöblierung" },
-                { icon: "lucide:zap", text: "Strom" },
-                { icon: "lucide:droplets", text: "Wasser" },
-                {
-                  icon: "lucide:thermometer",
-                  text: "Heizung (Fußbodenheizung)",
-                },
-                { icon: "lucide:wifi", text: "WLAN (studentischer Umfang)" },
-                { icon: "lucide:lock", text: "XXL-Lagerraum im UG" },
-                { icon: "lucide:dumbbell", text: "Nutzung Fitnessraum" },
-                {
-                  icon: "lucide:armchair",
-                  text: "Nutzung Gemeinschaftslounge",
-                },
-                { icon: "lucide:wrench", text: "Wartung & Instandhaltung" },
-              ].map(({ icon, text }) => (
-                <div class="flex items-center gap-3">
-                  <img
-                    src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
-                    alt=""
-                    width="18"
-                    height="18"
-                    class="shrink-0"
-                  />
-                  <span>{text}</span>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Gesondert -->
-        <div class="bg-white border border-villa-cream p-8">
-          <h3 class="font-serif text-xl text-villa-dark mb-6">
-            Gesondert berechnet
-          </h3>
-          <div class="font-sans text-sm text-villa-charcoal space-y-3">
-            {
-              [
-                {
-                  icon: "lucide:plug-zap",
-                  text: "E-Laden PKW (Verbrauch, MID-Standard)",
-                },
-                {
-                  icon: "lucide:bike",
-                  text: "E-Laden Fahrräder (Verbrauch, MID-Standard)",
-                },
-                {
-                  icon: "lucide:washing-machine",
-                  text: "Waschen & Trocknen (WeWash, per App)",
-                },
-                {
-                  icon: "lucide:square-parking",
-                  text: "PKW-Stellplatz (falls verfügbar)",
-                },
-              ].map(({ icon, text }) => (
-                <div class="flex items-center gap-3">
-                  <img
-                    src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
-                    alt=""
-                    width="18"
-                    height="18"
-                    class="shrink-0"
-                  />
-                  <span>{text}</span>
-                </div>
-              ))
-            }
+      <!-- Leistungsübersicht + Makler -->
+      <div class="flex flex-col items-stretch w-fit mx-auto">
+        <!-- Zwei Boxen nebeneinander -->
+        <div class="flex flex-col md:flex-row md:justify-center gap-8 mb-8">
+          <!-- Inklusive (schmaler) -->
+          <div class="bg-villa-cream p-8">
+            <h3 class="font-serif text-xl text-villa-dark mb-6">
+              In der Miete enthalten
+            </h3>
+            <div class="font-sans text-sm text-villa-charcoal space-y-3">
+              {
+                [
+                  { icon: "lucide:home", text: "Wohnraummiete" },
+                  { icon: "lucide:sofa", text: "Vollmöblierung" },
+                  { icon: "lucide:zap", text: "Strom" },
+                  { icon: "lucide:droplets", text: "Wasser" },
+                  {
+                    icon: "lucide:thermometer",
+                    text: "Heizung (Fußbodenheizung)",
+                  },
+                  { icon: "lucide:wifi", text: "WLAN (studentischer Umfang)" },
+                  { icon: "lucide:lock", text: "XXL-Lagerraum im UG" },
+                  { icon: "lucide:dumbbell", text: "Nutzung Fitnessraum" },
+                  {
+                    icon: "lucide:armchair",
+                    text: "Nutzung Gemeinschaftslounge",
+                  },
+                  { icon: "lucide:wrench", text: "Wartung & Instandhaltung" },
+                ].map(({ icon, text }) => (
+                  <div class="flex items-center gap-3">
+                    <img
+                      src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
+                      alt=""
+                      width="18"
+                      height="18"
+                      class="shrink-0"
+                    />
+                    <span class="whitespace-nowrap">{text}</span>
+                  </div>
+                ))
+              }
+            </div>
           </div>
 
-          <div class="mt-8 pt-6 border-t border-villa-cream">
-            <h4 class="font-serif text-lg text-villa-dark mb-4">
-              Mietbedingungen
-            </h4>
-            <div class="font-sans text-sm text-villa-charcoal space-y-2">
-              <p>
-                <span class="text-villa-gold font-bold">Mindestlaufzeit:</span> 12
-                Monate
-              </p>
-              <p>
-                <span class="text-villa-gold font-bold">Kündigung:</span> 3 Monate
-                zum Vertragsende
-              </p>
-              <p>
-                <span class="text-villa-gold font-bold">Verlängerung:</span> Automatisch
-                um 6 Monate bei gültiger Immatrikulation
-              </p>
-              <p>
-                <span class="text-villa-gold font-bold">Voraussetzung:</span> Immatrikulation
-                an staatl. Hochschule in Bayern
-              </p>
+          <!-- Gesondert (breiter wegen Mietbedingungen) -->
+          <div class="bg-white border border-villa-cream p-8">
+            <h3 class="font-serif text-xl text-villa-dark mb-6">
+              Gesondert berechnet
+            </h3>
+            <div class="font-sans text-sm text-villa-charcoal space-y-3">
+              {
+                [
+                  {
+                    icon: "lucide:plug-zap",
+                    text: "E-Laden PKW (Verbrauch, MID-Standard)",
+                  },
+                  {
+                    icon: "lucide:bike",
+                    text: "E-Laden Fahrräder (Verbrauch, MID-Standard)",
+                  },
+                  {
+                    icon: "lucide:washing-machine",
+                    text: "Waschen & Trocknen (WeWash, per App)",
+                  },
+                  {
+                    icon: "lucide:square-parking",
+                    text: "PKW-Stellplatz (falls verfügbar)",
+                  },
+                ].map(({ icon, text }) => (
+                  <div class="flex items-center gap-3">
+                    <img
+                      src={`https://api.iconify.design/${icon}.svg?color=%23C8A96E&width=18&height=18`}
+                      alt=""
+                      width="18"
+                      height="18"
+                      class="shrink-0"
+                    />
+                    <span class="whitespace-nowrap">{text}</span>
+                  </div>
+                ))
+              }
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-villa-cream">
+              <h4 class="font-serif text-lg text-villa-dark mb-4">
+                Mietbedingungen
+              </h4>
+              <div class="font-sans text-sm text-villa-charcoal space-y-2">
+                <p>
+                  <span class="text-villa-gold font-bold">Mindestlaufzeit:</span
+                  > 12 Monate
+                </p>
+                <p>
+                  <span class="text-villa-gold font-bold">Kündigung:</span> 3 Monate
+                  zum Vertragsende
+                </p>
+                <p>
+                  <span class="text-villa-gold font-bold">Verlängerung:</span> Automatisch
+                  um 6 Monate bei gültiger Immatrikulation
+                </p>
+                <p>
+                  <span class="text-villa-gold font-bold">Voraussetzung:</span> Immatrikulation
+                  an staatl. Hochschule in Bayern
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Makler-Hinweis -->
-      <div class="max-w-4xl mx-auto text-center p-8 bg-villa-cream">
-        <h3 class="font-serif text-xl text-villa-dark mb-4">
-          Vermietung über Makler
-        </h3>
-        <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
-          Ihre Bewerbung als Mieter erfolgt über einen beauftragten
-          Immobilienmakler. Dieser übernimmt die erste Kontaktaufnahme, Prüfung
-          Ihrer Unterlagen sowie die Terminvergabe für Besichtigungen. Im Falle
-          eines Mietabschlusses fällt die gesetzliche Maklerprovision an, die
-          vom Mieter zu tragen ist. Bitte senden Sie Ihre Bewerbung über das
-          nachfolgende Formular.
-        </p>
+        <!-- Makler-Hinweis (nimmt exakt die Breite der Boxen oben an) -->
+        <div class="w-0 min-w-full text-center p-8 bg-villa-cream">
+          <h3 class="font-serif text-xl text-villa-dark mb-4">
+            Vermietung über Makler
+          </h3>
+          <p class="font-sans text-sm text-villa-charcoal leading-relaxed">
+            Ihre Bewerbung als Mieter erfolgt über einen beauftragten
+            Immobilienmakler. Dieser übernimmt die erste Kontaktaufnahme,
+            Prüfung Ihrer Unterlagen sowie die Terminvergabe für Besichtigungen.
+            Im Falle eines Mietabschlusses fällt die gesetzliche Maklerprovision
+            an, die vom Mieter zu tragen ist. Bitte senden Sie Ihre Bewerbung
+            über das nachfolgende Formular.
+          </p>
+        </div>
       </div>
     </div>
   </section>
