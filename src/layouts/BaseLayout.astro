@@ -64,6 +64,62 @@ import CookieBanner from "../components/CookieBanner.astro";
 
     <!-- Sprache -->
     <link rel="alternate" hreflang="de" href="https://villa-bausewein.de/" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Studentenvilla Bausewein",
+        "description": "Premium-Studentenapartments in München-Obermenzing. Vollmöbliert, eigenes Bad mit Regendusche, Kitchenette, All-in-Miete.",
+        "url": "https://villa-bausewein.de",
+        "image": "https://villa-bausewein.de/og-image.jpg",
+        "telephone": "+491728909999",
+        "email": "ai@igenbergs.de",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bauseweinallee 36c",
+          "addressLocality": "München",
+          "addressRegion": "Bayern",
+          "postalCode": "81247",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 48.1681,
+          "longitude": 11.4758
+        },
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Fitnessraum",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "WLAN",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Fahrradstellplätze",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "E-Ladestation",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Gemeinschaftslounge",
+            "value": true
+          }
+        ],
+        "numberOfRooms": 25,
+        "petsAllowed": false
+      }
+    </script>
   </head>
   <body>
     <Header />
