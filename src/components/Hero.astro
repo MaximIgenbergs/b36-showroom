@@ -8,7 +8,6 @@ import { Image } from "astro:assets";
   id="hero"
   class="relative min-h-[90svh] flex items-center justify-center overflow-hidden"
 >
-  <!-- Tag-Bild (Standard, sichtbar) -->
   <Image
     id="hero-day"
     src={villaTag}
@@ -20,7 +19,6 @@ import { Image } from "astro:assets";
     loading="eager"
   />
 
-  <!-- Nacht-Bild (versteckt, faded ein bei Dark Mode) -->
   <Image
     id="hero-night"
     src={villaNacht}
@@ -32,10 +30,8 @@ import { Image } from "astro:assets";
     loading="eager"
   />
 
-  <!-- Dunkler Overlay für Textlesbarkeit -->
   <div class="absolute inset-0 bg-villa-dark/40"></div>
 
-  <!-- Inhalt -->
   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
     <h1
       class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-bold leading-tight mb-6"
@@ -51,7 +47,7 @@ import { Image } from "astro:assets";
     <p
       class="font-sans text-base sm:text-lg text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed"
     >
-      Modernes Wohnen im Stil einer klassischen Münchner Stadtvilla &mdash;
+      Modernes Wohnen im Stil einer klassischen Münchner Stadtvilla:
       vollmöblierte Apartments mit privatem Bad, Kitchenette und dem Komfort
       eines 4-Sterne-Hotels. Bezugsfertig. All-inclusive.
     </p>

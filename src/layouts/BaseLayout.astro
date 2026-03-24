@@ -15,7 +15,6 @@ import CookieBanner from "../components/CookieBanner.astro";
       content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
     />
 
-    <!-- SEO Meta -->
     <title>{title}</title>
     <meta
       name="description"
@@ -29,13 +28,11 @@ import CookieBanner from "../components/CookieBanner.astro";
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://villa-bausewein.de/" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph (Facebook, WhatsApp, iMessage Vorschau) -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta
@@ -50,7 +47,6 @@ import CookieBanner from "../components/CookieBanner.astro";
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Studentenvilla bausewein" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta
@@ -62,10 +58,8 @@ import CookieBanner from "../components/CookieBanner.astro";
       content="https://villa-bausewein.de/og-image.jpg"
     />
 
-    <!-- Sprache -->
     <link rel="alternate" hreflang="de" href="https://villa-bausewein.de/" />
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -125,7 +119,6 @@ import CookieBanner from "../components/CookieBanner.astro";
     <Header />
     <main>
       <slot />
-      <!-- slot = hier wird der Seiteninhalt eingesetzt -->
     </main>
     <Footer />
     <CookieBanner />
