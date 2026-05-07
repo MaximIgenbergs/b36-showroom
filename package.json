@@ -13,11 +13,12 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/vercel": "^10.0.6",
     "@fontsource/lato": "^5.2.7",
     "@fontsource/playfair-display": "^5.2.8",
-    "@supabase/supabase-js": "^2.99.1",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.0",
+    "resend": "^6.12.3",
     "tailwindcss": "^4.2.1"
   }
 }

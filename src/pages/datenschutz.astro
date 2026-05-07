@@ -38,8 +38,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Geschäftsführer: Andreas Igenbergs<br />
             Bauseweinallee 36c<br />
             81247 München<br /><br />
-            Telefon: +49 172 890 9999<br />
-            E-Mail: info@villa-bausewein.de
+            Telefon: <a
+              href="tel:+491728909999"
+              class="text-villa-gold hover:text-villa-dark transition-colors"
+              >+49 172 890 9999</a
+            ><br />
+            E-Mail: <a
+              href="mailto:info@villa-bausewein.de"
+              class="text-villa-gold hover:text-villa-dark transition-colors"
+              >info@villa-bausewein.de</a
+            >
           </p>
         </div>
 
@@ -88,9 +96,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p class="mb-4">
             Wenn Sie uns über das Bewerbungsformular auf der Website
             kontaktieren, werden Ihre Angaben aus dem Formular einschließlich
-            der von Ihnen dort angegebenen Kontaktdaten und der hochgeladenen
-            Immatrikulationsbescheinigung zwecks Bearbeitung Ihrer Mietanfrage
-            und für den Fall von Anschlussfragen bei uns gespeichert.
+            der von Ihnen dort angegebenen Kontaktdaten und des hochgeladenen
+            Berechtigungsscheins als E-Mail an unser Postfach (<a
+              href="mailto:info@villa-bausewein.de"
+              class="text-villa-gold hover:text-villa-dark transition-colors"
+              >info@villa-bausewein.de</a
+            >) übermittelt und dort zwecks Bearbeitung Ihrer Mietanfrage und
+            für den Fall von Anschlussfragen gespeichert.
           </p>
           <p class="mb-4">
             Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs.
@@ -100,21 +112,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie über
             das Formular erteilen.
           </p>
-          <p>
-            Die Formulardaten werden über den Dienst Formspree (Formspree Inc.,
-            1123 Broadway, Suite 220, New York, NY 10010, USA) verarbeitet.
-            Details:
+          <p class="mb-4">
+            Für den technischen Versand der E-Mail-Benachrichtigung nutzen wir
+            den Dienst Resend (Resend, Inc., 2261 Market Street #5039, San
+            Francisco, CA 94114, USA). Resend verarbeitet dabei die im Formular
+            angegebenen Daten sowie den Anhang, ausschließlich um die
+            Benachrichtigungs-E-Mail an unser Postfach zuzustellen. Eine
+            darüberhinausgehende Speicherung oder Nutzung durch Resend findet
+            nicht statt. Datenübermittlungen in die USA erfolgen auf Grundlage
+            des EU-US Data Privacy Framework und ergänzender
+            Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO.
+            Details zur Datenverarbeitung:
             <a
-              href="https://formspree.io/legal/privacy-policy"
+              href="https://resend.com/legal/privacy-policy"
               target="_blank"
               rel="noopener"
               class="text-villa-gold hover:text-villa-dark transition-colors"
             >
-              https://formspree.io/legal/privacy-policy</a
-            >. Ihre Daten werden an den beauftragten Immobilienmakler zur
-            Bearbeitung Ihrer Bewerbung weitergeleitet. Sie werden gelöscht,
-            sobald der Zweck der Speicherung entfällt und keine gesetzlichen
-            Aufbewahrungspflichten dem entgegenstehen.
+              https://resend.com/legal/privacy-policy</a
+            >.
+          </p>
+          <p>
+            Ihre Daten werden anschließend an den beauftragten Immobilienmakler
+            zur Bearbeitung Ihrer Bewerbung weitergeleitet. Sie werden
+            gelöscht, sobald der Zweck der Speicherung entfällt und keine
+            gesetzlichen Aufbewahrungspflichten dem entgegenstehen.
           </p>
         </div>
 
@@ -181,7 +203,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
           <p>
             Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten
-            können Sie sich jederzeit an uns wenden: datenschutz@villa-bausewein.de. Ferner
+            können Sie sich jederzeit an uns wenden: <a
+              href="mailto:datenschutz@villa-bausewein.de"
+              class="text-villa-gold hover:text-villa-dark transition-colors"
+              >datenschutz@villa-bausewein.de</a
+            >. Ferner
             steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde
             zu. Die zuständige Aufsichtsbehörde ist das Bayerische Landesamt für
             Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.
@@ -191,7 +217,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div>
           <h2 class="font-serif text-xl text-villa-dark mb-3">8. Aktualität</h2>
           <p>
-            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand März
+            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai
             2026. Durch die Weiterentwicklung unserer Website oder aufgrund
             geänderter gesetzlicher bzw. behördlicher Vorgaben kann es notwendig
             werden, diese Datenschutzerklärung zu ändern.

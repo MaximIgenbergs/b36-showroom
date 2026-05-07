@@ -106,6 +106,7 @@
       class="w-full px-4 py-3 border border-villa-charcoal/20 font-sans text-sm focus:outline-none focus:border-villa-gold transition-colors bg-white"
     >
       <option value="">Keine Präferenz</option>
+      <option value="ug">Untergeschoss</option>
       <option value="eg">Erdgeschoss (mit Terrasse)</option>
       <option value="og">Obergeschoss (mit Balkon)</option>
       <option value="dg">Dachgeschoss (mit Balkon)</option>
@@ -129,7 +130,7 @@
       class="w-full px-4 py-3 border border-villa-charcoal/20 font-sans text-sm focus:outline-none focus:border-villa-gold transition-colors file:mr-4 file:py-1 file:px-3 file:border-0 file:text-sm file:font-bold file:bg-villa-gold file:text-white"
     />
     <p class="font-sans text-xs text-villa-charcoal/60 mt-1">
-      Maximale Dateigröße: 10 MB
+      Maximale Dateigröße: 4 MB
     </p>
   </div>
 
@@ -197,89 +198,66 @@
 </form>
 
 <script>
-  import { createClient } from "@supabase/supabase-js";
+  const MAX_FILE_SIZE = 4 * 1024 * 1024;
 
-  const supabaseUrl = "https://vykqptolkzzbpuxsagvp.supabase.co";
-  const supabaseAnonKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5a3FwdG9sa3p6YnB1eHNhZ3ZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzMDI5NjksImV4cCI6MjA4ODg3ODk2OX0.QQO-7-z6v7QZLTTpLBBt9jxz9EsXOhYIcOFq1gF05zk";
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  const form = document.getElementById("bewerbung-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status") as HTMLElement | null;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
 
-  const form = document.getElementById("bewerbung-form");
-  const status = document.getElementById("form-status");
-  const submitBtn = document.getElementById("submit-btn");
+  const showStatus = (message: string, type: "success" | "error") => {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove("hidden", "bg-red-50", "text-red-700", "bg-green-50", "text-green-700");
+    if (type === "success") {
+      status.classList.add("bg-green-50", "text-green-700");
+    } else {
+      status.classList.add("bg-red-50", "text-red-700");
+    }
+  };
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!submitBtn || !form) return;
 
-    // Honeypot check
-    const honeypot = form.querySelector('[name="_gotcha"]');
-    if (honeypot && honeypot.value) return;
+    const fileInput = document.getElementById("immatrikulation") as HTMLInputElement | null;
+    const file = fileInput?.files?.[0];
+    if (file && file.size > MAX_FILE_SIZE) {
+      showStatus("Datei ist größer als 4 MB. Bitte wählen Sie eine kleinere Datei.", "error");
+      return;
+    }
 
-    // Disable button
     submitBtn.disabled = true;
     submitBtn.textContent = "Wird gesendet...";
     submitBtn.classList.add("opacity-50");
 
     try {
-      // Datei hochladen
-      let immatrikulationUrl = null;
-      const fileInput = document.getElementById("immatrikulation");
-      const file = fileInput?.files?.[0];
-
-      if (file) {
-        if (file.size > 10 * 1024 * 1024) {
-          throw new Error("Datei ist größer als 10 MB.");
-        }
-
-        const timestamp = Date.now();
-        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-        const filePath = `${timestamp}_${safeName}`;
-
-        const { data: uploadData, error: uploadError } = await supabase.storage
-          .from("immatrikulation")
-          .upload(filePath, file);
-
-        if (uploadError) throw new Error("Datei-Upload fehlgeschlagen.");
-
-        const { data: urlData } = supabase.storage
-          .from("immatrikulation")
-          .getPublicUrl(filePath);
-
-        immatrikulationUrl = urlData.publicUrl;
-      }
-
-      // Formulardaten in Datenbank speichern
-      const { error: dbError } = await supabase.from("bewerbungen").insert({
-        vorname: form.vorname.value,
-        nachname: form.nachname.value,
-        email: form.email.value,
-        telefon: form.telefon.value || null,
-        einzug: form.einzug.value,
-        hochschule: form.hochschule.value,
-        praeferenz: form.praeferenz.value || null,
-        nachricht: form.nachricht.value || null,
-        immatrikulation_url: immatrikulationUrl,
+      const formData = new FormData(form);
+      const response = await fetch("/api/bewerbung", {
+        method: "POST",
+        body: formData,
       });
 
-      if (dbError) throw new Error("Speichern fehlgeschlagen.");
+      const result = await response.json().catch(() => ({}));
 
-      // Erfolg
-      status.textContent =
-        "Ihre Bewerbung wurde erfolgreich gesendet! Wir melden uns in Kürze bei Ihnen.";
-      status.classList.remove("hidden", "bg-red-50", "text-red-700");
-      status.classList.add("bg-green-50", "text-green-700");
+      if (!response.ok) {
+        throw new Error(result.error || "Ein Fehler ist aufgetreten.");
+      }
+
+      showStatus(
+        "Ihre Bewerbung wurde erfolgreich gesendet! Wir melden uns in Kürze bei Ihnen.",
+        "success",
+      );
       form.reset();
     } catch (err) {
-      status.textContent =
-        err.message ||
-        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
-      status.classList.remove("hidden", "bg-green-50", "text-green-700");
-      status.classList.add("bg-red-50", "text-red-700");
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.";
+      showStatus(message, "error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Bewerbung absenden";
+      submitBtn.classList.remove("opacity-50");
     }
-
-    // Button zurücksetzen
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Bewerbung absenden";
-    submitBtn.classList.remove("opacity-50");
   });
 </script>
