@@ -15,6 +15,19 @@ const PRAEFERENZ_LABELS: Record<string, string> = {
   doppel: "Doppelapartment D3 (ca. 34 m²)",
 };
 
+const formatEinzug = (iso: string) => {
+  const match = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return iso;
+  const [, y, m, d] = match;
+  const date = new Date(Date.UTC(Number(y), Number(m) - 1, Number(d)));
+  return new Intl.DateTimeFormat("de-DE", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+};
+
 const escapeHtml = (str: string) =>
   str.replace(
     /[&<>"']/g,
@@ -95,6 +108,8 @@ export const POST: APIRoute = async ({ request }) => {
     ? (PRAEFERENZ_LABELS[praeferenz] ?? praeferenz)
     : "—";
 
+  const einzugAnzeige = formatEinzug(einzug);
+
   const row = (label: string, value: string) =>
     `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:bold;width:180px;">${label}</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${value}</td></tr>`;
 
@@ -108,7 +123,7 @@ export const POST: APIRoute = async ({ request }) => {
     ${row("Nachname", escapeHtml(nachname))}
     ${row("E-Mail", `<a href="mailto:${escapeHtml(email)}" style="color:#c9a961;">${escapeHtml(email)}</a>`)}
     ${row("Telefon", telefon ? escapeHtml(telefon) : "—")}
-    ${row("Einzugstermin", escapeHtml(einzug))}
+    ${row("Einzugstermin", escapeHtml(einzugAnzeige))}
     ${row("Dienstverhältnis", escapeHtml(hochschule))}
     ${row("Apartment-Präferenz", escapeHtml(praeferenzAnzeige))}
   </table>
@@ -133,7 +148,7 @@ export const POST: APIRoute = async ({ request }) => {
     `Nachname:            ${nachname}`,
     `E-Mail:              ${email}`,
     `Telefon:             ${telefon || "—"}`,
-    `Einzugstermin:       ${einzug}`,
+    `Einzugstermin:       ${einzugAnzeige}`,
     `Dienstverhältnis:    ${hochschule}`,
     `Apartment-Präferenz: ${praeferenzAnzeige}`,
     "",
