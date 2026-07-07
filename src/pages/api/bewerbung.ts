@@ -96,7 +96,9 @@ export const POST: APIRoute = async ({ request }) => {
 
   const file = formData.get("immatrikulation");
   if (!(file instanceof File) || file.size === 0) {
-    return json(400, { error: "Bitte einen Berechtigungsschein hochladen." });
+    return json(400, {
+      error: "Bitte eine Immatrikulationsbescheinigung hochladen.",
+    });
   }
   if (file.size > MAX_FILE_SIZE) {
     return json(400, { error: "Datei ist größer als 4 MB." });
@@ -124,7 +126,7 @@ export const POST: APIRoute = async ({ request }) => {
     ${row("E-Mail", `<a href="mailto:${escapeHtml(email)}" style="color:#c9a961;">${escapeHtml(email)}</a>`)}
     ${row("Telefon", telefon ? escapeHtml(telefon) : "—")}
     ${row("Einzugstermin", escapeHtml(einzugAnzeige))}
-    ${row("Dienstverhältnis", escapeHtml(hochschule))}
+    ${row("Hochschule / Studiengang", escapeHtml(hochschule))}
     ${row("Apartment-Präferenz", escapeHtml(praeferenzAnzeige))}
   </table>
   ${
@@ -134,7 +136,7 @@ export const POST: APIRoute = async ({ request }) => {
       : ""
   }
   <p style="margin-top: 24px; padding: 12px; background: #f7f5f0; font-size: 13px; color: #555;">
-    Berechtigungsschein im Anhang: <strong>${escapeHtml(file.name)}</strong> (${(file.size / 1024).toFixed(0)} KB)
+    Immatrikulationsbescheinigung im Anhang: <strong>${escapeHtml(file.name)}</strong> (${(file.size / 1024).toFixed(0)} KB)
   </p>
   <p style="margin-top: 16px; font-size: 12px; color: #888;">
     Direkt antworten an den Bewerber: einfach auf "Antworten" klicken.
@@ -149,12 +151,12 @@ export const POST: APIRoute = async ({ request }) => {
     `E-Mail:              ${email}`,
     `Telefon:             ${telefon || "—"}`,
     `Einzugstermin:       ${einzugAnzeige}`,
-    `Dienstverhältnis:    ${hochschule}`,
+    `Hochschule/Studiengang: ${hochschule}`,
     `Apartment-Präferenz: ${praeferenzAnzeige}`,
     "",
     nachricht ? `Anschreiben:\n${nachricht}` : "",
     "",
-    `Berechtigungsschein im Anhang: ${file.name} (${(file.size / 1024).toFixed(0)} KB)`,
+    `Immatrikulationsbescheinigung im Anhang: ${file.name} (${(file.size / 1024).toFixed(0)} KB)`,
   ]
     .filter(Boolean)
     .join("\n");
